@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo: Flexbox, Grid y Position</title>
+    
+    <!-- Tu framework CSS -->
+    <style>
+        /* ========================================
+           TU FRAMEWORK CSS (versión educativa)
+           ======================================== */
+        
+        /* Helpers de contenedores flex */
+        .cont-space-between {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .cont-space-around {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .cont-space-evenly {
+            display: flex;
+            justify-content: space-evenly;
+        }
+        
+        /* Helpers flex básicos */
+        .d-flex { display: flex; }
+        .d-flex-col { display: flex; flex-direction: column; }
+        .d-flex-col-row { display: flex; flex-direction: column; }
+        
+        /* Align items */
+        .align-start { align-items: flex-start; }
+        .align-center { align-items: center; }
+        .align-end { align-items: flex-end; }
+        .align-stretch { align-items: stretch; }
+        .align-baseline { align-items: baseline; }
+        
+        /* Justify content */
+        .justify-start { justify-content: flex-start; }
+        .justify-center { justify-content: center; }
+        .justify-end { justify-content: flex-end; }
+        .justify-between { justify-content: space-between; }
+        .justify-around { justify-content: space-around; }
+        .justify-evenly { justify-content: space-evenly; }
+        
+        /* Text align */
+        .text-center { text-align: center; }
+        .text-start { text-align: start; }
+        .text-end { text-align: end; }
+        
+        /* Grid */
+        .d-grid {
+            display: grid;
+            gap: 16px;
+        }
+        
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        
+        /* Position */
+        .relative { position: relative; }
+        .absolute { position: absolute; }
+        
+        /* Sizing */
+        .w-100 { width: 100%; }
+        .h-100 { height: 100%; }
+        .h-200 { height: 200px; }
+        .h-300 { height: 300px; }
+        
+        /* Colors backgrounds para demostración */
+        .bg-red { background-color: #ef4444; color: white; }
+        .bg-blue { background-color: #3b82f6; color: white; }
+        .bg-green { background-color: #10b981; color: white; }
+        .bg-yellow { background-color: #f59e0b; color: #1f2937; }
+        .bg-purple { background-color: #8b5cf6; color: white; }
+        .bg-pink { background-color: #ec4899; color: white; }
+        .bg-gray { background-color: #6b7280; color: white; }
+        .bg-light { background-color: #f3f4f6; color: #1f2937; border: 2px solid #d1d5db; }
+        
+        /* Utilidades visuales */
+        .card {
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .container-demo {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3b82f6;
+        }
+        
+        .demo-box {
+            border: 2px dashed #9ca3af;
+            padding: 16px;
+            margin: 16px 0;
+            background: #f9fafb;
+        }
+        
+        code {
+            background: #1f2937;
+            color: #10b981;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body style="background: #e5e7eb; font-family: system-ui, sans-serif;">
+    <div class="container-demo">
+        <h1 style="text-align: center; color: #1f2937; margin-bottom: 40px;">
+            🎨 Demo Visual: Flexbox, Grid y Position
+        </h1>
+        
+        <!-- ======================================== -->
+        <!-- SECCIÓN 1: JUSTIFY CONTENT (Horizontal)   -->
+        <!-- ======================================== -->
+        <div class="section">
+            <h2 class="section-title">1️⃣ JUSTIFY-CONTENT (Alineación Horizontal)</h2>
+            <p><strong>¿Qué hace?</strong> Controla cómo se distribuyen los hijos en el eje HORIZONTAL</p>
+            
+            <!-- justify-content: flex-start -->
+            <div class="demo-box">
+                <p><code>justify-start</code> → Elementos pegados a la izquierda</p>
+                <div class="d-flex justify-start bg-light" style="gap: 10px;">
+                    <div class="card bg-red">1</div>
+                    <div class="card bg-blue">2</div>
+                    <div class="card bg-green">3</div>
+                </div>
+            </div>
+            
+            <!-- justify-content: center -->
+            <div class="demo-box">
+                <p><code>justify-center</code> → Elementos centrados horizontalmente</p>
+                <div class="d-flex justify-center bg-light" style="gap: 10px;">
+                    <div class="card bg-red">1</div>
+                    <div class="card bg-blue">2</div>
+                    <div class="card bg-green">3</div>
+                </div>
+            </div>
+            
+            <!-- justify-content: flex-end -->
+            <div class="demo-box">
+                <p><code>justify-end</code> → Elementos pegados a la derecha</p>
+                <div class="d-flex justify-end bg-light" style="gap: 10px;">
+                    <div class="card bg-red">1</div>
+                    <div class="card bg-blue">2</div>
+                    <div class="card bg-green">3</div>
+                </div>
+            </div>
+            
+            <!-- justify-content: space-between -->
+            <div class="demo-box">
+                <p><code>justify-between</code> → Espacio ENTRE los elementos (primero a la izq, último a la der)</p>
+                <div class="d-flex justify-between bg-light">
+                    <div class="card bg-red">1</div>
+                    <div class="card bg-blue">2</div>
+                    <div class="card bg-green">3</div>
+                </div>
+            </div>
+            
+            <!-- justify-content: space-around -->
+            <div class="demo-box">
+                <p><code>justify-around</code> → Espacio ALREDEDOR de cada elemento</p>
+                <div class="d-flex justify-around bg-light">
+                    <div class="card bg-red">1</div>
+                    <div class="card bg-blue">2</div>
+                    <div class="card bg-green">3</div>
+                </div>
+            </div>
+            
+            <!-- justify-content: space-evenly -->
+            <div class="demo-box">
+                <p><code>justify-evenly</code> → Espacio UNIFORME entre elementos y bordes</p>
+                <div class="d-flex justify-evenly bg-light">
+                    <div class="card bg-red">1</div>
+                    <div class="card bg-blue">2</div>
+                    <div class="card bg-green">3</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ======================================== -->
+        <!-- SECCIÓN 2: ALIGN ITEMS (Vertical)         -->
+        <!-- ======================================== -->
+        <div class="section">
+            <h2 class="section-title">2️⃣ ALIGN-ITEMS (Alineación Vertical)</h2>
+            <p><strong>¿Qué hace?</strong> Controla cómo se alinean los hijos en el eje VERTICAL</p>
+            
+            <!-- align-items: flex-start -->
+            <div class="demo-box">
+                <p><code>align-start</code> → Elementos pegados ARRIBA</p>
+                <div class="d-flex align-start bg-light" style="gap: 10px; height: 150px;">
+                    <div class="card bg-red" style="height: 50px;">1</div>
+                    <div class="card bg-blue" style="height: 80px;">2</div>
+                    <div class="card bg-green" style="height: 40px;">3</div>
+                </div>
+            </div>
+            
+            <!-- align-items: center -->
+            <div class="demo-box">
+                <p><code>align-center</code> → Elementos centrados VERTICALMENTE (¡Muy usado!)</p>
+                <div class="d-flex align-center bg-light" style="gap: 10px; height: 150px;">
+                    <div class="card bg-red" style="height: 50px;">1</div>
+                    <div class="card bg-blue" style="height: 80px;">2</div>
+                    <div class="card bg-green" style="height: 40px;">3</div>
+                </div>
+            </div>
+            
+            <!-- align-items: flex-end -->
+            <div class="demo-box">
+                <p><code>align-end</code> → Elementos pegados ABAJO</p>
+                <div class="d-flex align-end bg-light" style="gap: 10px; height: 150px;">
+                    <div class="card bg-red" style="height: 50px;">1</div>
+                    <div class="card bg-blue" style="height: 80px;">2</div>
+                    <div class="card bg-green" style="height: 40px;">3</div>
+                </div>
+            </div>
+            
+            <!-- align-items: stretch -->
+            <div class="demo-box">
+                <p><code>align-stretch</code> → Elementos se ESTIRAN para llenar todo el alto (valor por defecto)</p>
+                <div class="d-flex align-stretch bg-light" style="gap: 10px; height: 150px;">
+                    <div class="card bg-red">1</div>
+                    <div class="card bg-blue">2</div>
+                    <div class="card bg-green">3</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ======================================== -->
+        <!-- SECCIÓN 3: COMBINACIONES ÚTILES           -->
+        <!-- ======================================== -->
+        <div class="section">
+            <h2 class="section-title">3️⃣ COMBINACIONES PRÁCTICAS (Centrado Perfecto)</h2>
+            
+            <!-- Centrado completo (horizontal + vertical) -->
+            <div class="demo-box">
+                <p><code>justify-center + align-center</code> → 🔥 CENTRADO PERFECTO (horizontal + vertical)</p>
+                <div class="d-flex justify-center align-center bg-light" style="height: 200px;">
+                    <div class="card bg-purple">🎯 ¡Estoy centrado perfectamente!</div>
+                </div>
+            </div>
+            
+            <!-- Barra de navegación típica -->
+            <div class="demo-box">
+                <p><code>justify-between + align-center</code> → Barra de navegación (Logo izquierda, menú derecha)</p>
+                <div class="d-flex justify-between align-center bg-gray" style="padding: 15px; border-radius: 8px;">
+                    <div class="badge bg-yellow">🏠 Logo</div>
+                    <div class="d-flex" style="gap: 15px;">
+                        <span class="badge bg-light">Inicio</span>
+                        <span class="badge bg-light">Productos</span>
+                        <span class="badge bg-light">Contacto</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ======================================== -->
+        <!-- SECCIÓN 4: FLEX DIRECTION COLUMN          -->
+        <!-- ======================================== -->
+        <div class="section">
+            <h2 class="section-title">4️⃣ FLEX DIRECTION: COLUMN (Apilamiento Vertical)</h2>
+            
+            <div class="demo-box">
+                <p><code>d-flex-col</code> → Elementos apilados VERTICALMENTE (uno abajo del otro)</p>
+                <div class="d-flex-col bg-light" style="gap: 10px;">
+                    <div class="card bg-red">Elemento 1</div>
+                    <div class="card bg-blue">Elemento 2</div>
+                    <div class="card bg-green">Elemento 3</div>
+                </div>
+            </div>
+            
+            <div class="demo-box">
+                <p><code>d-flex-col + align-center</code> → Elementos centrados horizontalmente en columna</p>
+                <div class="d-flex-col align-center bg-light" style="gap: 10px;">
+                    <div class="card bg-red" style="width: 80%;">Ancho 80%</div>
+                    <div class="card bg-blue" style="width: 60%;">Ancho 60%</div>
+                    <div class="card bg-green" style="width: 40%;">Ancho 40%</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ======================================== -->
+        <!-- SECCIÓN 5: GRID (CSS Grid Layout)         -->
+        <!-- ======================================== -->
+        <div class="section">
+            <h2 class="section-title">5️⃣ CSS GRID (Diseño en 2 dimensiones)</h2>
+            <p><strong>¿Qué hace?</strong> Controla filas Y columnas simultáneamente</p>
+            
+            <!-- Grid 2 columnas -->
+            <div class="demo-box">
+                <p><code>d-grid grid-2</code> → 2 columnas iguales</p>
+                <div class="d-grid grid-2">
+                    <div class="card bg-red">1</div>
+                    <div class="card bg-blue">2</div>
+                    <div class="card bg-green">3</div>
+                    <div class="card bg-yellow">4</div>
+                </div>
+            </div>
+            
+            <!-- Grid 3 columnas -->
+            <div class="demo-box">
+                <p><code>d-grid grid-3</code> → 3 columnas iguales</p>
+                <div class="d-grid grid-3">
+                    <div class="card bg-red">1</div>
+                    <div class="card bg-blue">2</div>
+                    <div class="card bg-green">3</div>
+                    <div class="card bg-yellow">4</div>
+                    <div class="card bg-purple">5</div>
+                    <div class="card bg-pink">6</div>
+                </div>
+            </div>
+            
+            <!-- Grid 4 columnas responsive -->
+            <div class="demo-box">
+                <p><code>d-grid grid-4</code> → 4 columnas iguales</p>
+                <div class="d-grid grid-4">
+                    <div class="card bg-red">1</div>
+                    <div class="card bg-blue">2</div>
+                    <div class="card bg-green">3</div>
+                    <div class="card bg-yellow">4</div>
+                    <div class="card bg-purple">5</div>
+                    <div class="card bg-pink">6</div>
+                    <div class="card bg-gray">7</div>
+                    <div class="card bg-light">8</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ======================================== -->
+        <!-- SECCIÓN 6: POSITION RELATIVE + ABSOLUTE   -->
+        <!-- ======================================== -->
+        <div class="section">
+            <h2 class="section-title">6️⃣ POSITION: RELATIVE + ABSOLUTE</h2>
+            <p><strong>¿Qué hace?</strong> Posicionamiento relativo/absoluto para superponer elementos</p>
+            
+            <!-- Relative container con hijo absolute -->
+            <div class="demo-box">
+                <p><code>relative + absolute</code> → Elemento superpuesto dentro de su contenedor</p>
+                <div class="relative bg-light" style="height: 200px; border: 2px solid #3b82f6;">
+                    <div class="card bg-blue" style="position: absolute; top: 10px; left: 10px;">
+                        🏷️ Esquina superior izquierda
+                    </div>
+                    <div class="card bg-green" style="position: absolute; bottom: 10px; right: 10px;">
+                        🏷️ Esquina inferior derecha
+                    </div>
+                    <div class="card bg-red" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                        🎯 ¡Centrado con absolute + transform!
+                    </div>
+                </div>
+                <p class="badge bg-light" style="margin-top: 10px;">
+                    💡 El contenedor tiene <code>position: relative</code> y los hijos <code>position: absolute</code> 
+                    se posicionan RELATIVOS a este contenedor
+                </p>
+            </div>
+            
+            <!-- Ejemplo práctico: Badge de notificación -->
+            <div class="demo-box">
+                <p><code>absolute</code> → Badge de notificación (ejemplo real)</p>
+                <div class="relative" style="display: inline-block;">
+                    <button class="card bg-gray" style="padding: 12px 24px;">🔔 Notificaciones</button>
+                    <div class="absolute bg-red" style="top: -8px; right: -8px; padding: 4px 8px; border-radius: 9999px; font-size: 12px; font-weight: bold;">
+                        3+
+                    </div>
+                </div>
+                <p class="badge bg-light" style="margin-top: 10px;">
+                    💡 El badge rojo está posicionado ABSOLUTAMENTE relativo al botón
+                </p>
+            </div>
+        </div>
+        
+        <!-- ======================================== -->
+        <!-- SECCIÓN 7: COMPARATIVA RÁPIDA             -->
+        <!-- ======================================== -->
+        <div class="section">
+            <h2 class="section-title">7️⃣ COMPARATIVA: FLEXBOX vs GRID vs POSITION</h2>
+            
+            <div class="d-grid grid-3" style="gap: 20px;">
+                <!-- Flexbox -->
+                <div class="bg-light" style="padding: 20px; border-radius: 12px;">
+                    <h3 style="color: #3b82f6;">📦 FLEXBOX</h3>
+                    <p><strong>1 dimensión</strong> (fila O columna)</p>
+                    <ul style="font-size: 14px;">
+                        <li>✅ Alineación simple</li>
+                        <li>✅ Distribución de espacio</li>
+                        <li>✅ Centrado fácil</li>
+                        <li>❌ No controla filas y columnas juntas</li>
+                    </ul>
+                    <code>d-flex, justify-center, align-center</code>
+                </div>
+                
+                <!-- Grid -->
+                <div class="bg-light" style="padding: 20px; border-radius: 12px;">
+                    <h3 style="color: #10b981;">🗂️ GRID</h3>
+                    <p><strong>2 dimensiones</strong> (filas Y columnas)</p>
+                    <ul style="font-size: 14px;">
+                        <li>✅ Control total filas/columnas</li>
+                        <li>✅ Layouts complejos</li>
+                        <li>✅ Áreas con nombre</li>
+                        <li>❌ Más código para cosas simples</li>
+                    </ul>
+                    <code>d-grid, grid-3, col-span-all</code>
+                </div>
+                
+                <!-- Position -->
+                <div class="bg-light" style="padding: 20px; border-radius: 12px;">
+                    <h3 style="color: #ef4444;">📍 POSITION</h3>
+                    <p><strong>Superposición</strong> (sacar del flujo)</p>
+                    <ul style="font-size: 14px;">
+                        <li>✅ Elementos flotantes</li>
+                        <li>✅ Modales, tooltips</li>
+                        <li>✅ Badges, overlays</li>
+                        <li>❌ Complejo para layouts</li>
+                    </ul>
+                    <code>relative, absolute, fixed</code>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ======================================== -->
+        <!-- FOOTER                                   -->
+        <!-- ======================================== -->
+        <div class="section" style="background: #1f2937; color: white; text-align: center;">
+            <h3>🎓 Resumen Final</h3>
+            <div class="d-flex justify-center" style="gap: 30px; flex-wrap: wrap; margin-top: 20px;">
+                <div>
+                    <strong>🔵 Flexbox</strong><br>
+                    <small>Para componentes<br>y alineaciones simples</small>
+                </div>
+                <div>
+                    <strong>🟢 Grid</strong><br>
+                    <small>Para layouts<br>de página completos</small>
+                </div>
+                <div>
+                    <strong>🔴 Position</strong><br>
+                    <small>Para superponer<br>elementos específicos</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,198 @@
+
+:root {
+    --bg-color: white;
+    --text-primary: black;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+
+    padding: 0 2%;
+}
+
+/* Styles for small mobile phones (hasta 480px) */
+/* Styles for small mobile phones */
+
+/* Styles for tablets (mín. 480px to max. 768px) */
+@media (min-width: 480px) {
+    /* Styles for tablets */
+    body { 
+        padding: 0 5%;
+    }
+}
+
+/* Styles for desktops (mín. 768px to max. 992px+)) */
+@media (min-width: 768px) {
+    /* Styles for desktops */
+}
+
+/* Styles for large desktops (mín. 992px to max. infinite) */
+@media (min-width: 992px) {
+    body { 
+        padding: 0 6%;
+    }
+}
+
+main, header {
+    background-color: aliceblue;
+}
+
+.d-grid { display: grid; }
+.d-flex { display: flex; }
+.d-flex-col { display: flex; flex-direction: column;}
+.d-none { display: none; }
+
+.justify-center { justify-content: center;}
+.align-center { align-items: center;}
+
+.w-100 { width: 100%; }
+.h-100 { height: 100%; }
+
+.gap-1 { gap: 4px; }
+.gap-2 { gap: 8px; }
+.gap-3 { gap: 16px; }
+
+.mt-3 { margin-top: 16px; }
+
+/* FIRST MOBILE */
+.cont-grid-123 { grid-template-columns: 1fr; }
+
+.img-scale-down {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+}
+
+.h-32 { height: 32px; }
+.h-220 { height: 220px; }
+.w-min { width: min-content; }
+
+.text-truncate { white-space: nowrap; }
+
+/* Styles for tablets (mín. 480px to max. 768px) */
+@media (min-width: 480px) {
+    /* Styles for tablets */
+    .cont-grid-123 { grid-template-columns: 1fr 1fr; }
+}
+
+/* Styles for desktops (mín. 768px to max. 992px+)) */
+@media (min-width: 768px) {
+    /* Styles for desktops */
+    .cont-grid-123 { grid-template-columns: 1fr 1fr; }
+}
+
+/* Styles for large desktops (mín. 992px to max. infinite) */
+@media (min-width: 992px) {
+    /* Styles for large desktops */
+    .cont-grid-123 { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+.g-all-columns { 
+    grid-column: 2 / -1;     /* Ahora sí funcionará: ocupa todas las columnas */
+}
+
+.profile-picture {
+    object-fit: scale-down;
+    border-radius: 50%;
+}
+
+
+.btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Estilos del botón (los que ya tenías) */
+.btn-green {
+  background: #1f3537;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.6em;
+  color: #dbdbdb;
+}
+
+.btn-green-gradient {
+  position: absolute;    
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 0.6em;
+  margin-top: -0.25em;
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.3)
+  );
+}
+
+.btn-green-label {
+  position: relative;
+  top: -1px;
+}
+
+.btn-green-transition {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition-duration: 500ms;
+  background-color: rgba(16, 185, 129, 0.6);
+  border-radius: 9999px;
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.btn-green:hover .btn-green-transition {
+  width: 14em;
+  height: 14em;
+  color: #1f3537;
+}
+
+.btn-green:active {
+  transform: scale(0.97);
+}
+
+
+/* Profile Section */
+
+.profile-settings-btn {
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+
+.profile-stats {
+    margin-top: 2.3rem;
+}
+
+.profile-stats li {
+    display: inline-block;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    margin-right: 4rem;
+    cursor: pointer;
+}
+
+.profile-stats li:last-of-type {
+    margin-right: 0;
+}
+
+.profile-bio {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-top: 2.3rem;
+}
+
+.profile-real-name,
+.profile-stat-count,
+.profile-edit-btn {
+    font-weight: 600;
+}
