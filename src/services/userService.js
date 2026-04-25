@@ -1,0 +1,81 @@
+const User = require('../models/User');
+const sequelize = require('../config/db.js'); 
+
+/**
+ * Servicio encargado de la lógica de negocio para la entidad Usuario.
+ * Se utilizan métodos estáticos para no requerir la instanciación de la clase.
+ */
+class UserService {
+    
+    /**
+     * Recupera todos los usuarios de la base de datos.
+     * @returns {Promise<Array>} Lista de usuarios.
+     */
+    static async getAllUsers() {
+        // En una app real, aquí podrías aplicar filtros o paginación
+        return await User.findAll();
+    }
+
+    /**
+     * Crea un nuevo usuario.
+     * @param {Object} userData - Objeto con los datos del usuario (firstName, lastName, email).
+     * @returns {Promise<Object>} El usuario creado.
+     */
+    static async createUser(userData) {
+        /**
+         * Lógica de negocio adicional:
+         * Podrías verificar si el email ya existe manualmente antes de intentar insertar,
+         * aunque Sequelize ya lo hace por el constraint 'unique: true'.
+         */
+        return await User.create(userData);
+    }
+
+    /**
+     * Busca un usuario por su ID.
+     * @param {number} id - Identificador único.
+     * @returns {Promise<Object|null>}
+     */
+    static async getUserById(id) {
+        return await User.findByPk(id);
+    }
+
+
+    /**
+     * Genera datos de prueba iniciales en la base de datos.
+     * Útil para desarrollo y testing.
+     */
+    static async seed() {
+        /**
+         * Iniciamos la transacción gestionada.
+         * Sequelize ejecutará el COMMIT si la función llega al final,
+         * o un ROLLBACK si se lanza una excepción (throw).
+         */
+        try {
+            await sequelize.transaction(async (t) => {
+                // SQL Transaccion  ---> checkpoint
+
+                const count = await User.count({ transaction: t });
+                
+                if (count > 1) {
+                    console.log('🌱 La base de datos ya tiene datos, omitiendo el seed.');
+                    return;
+                }
+
+                // Es CRUCIAL pasar { transaction: t } en cada operación
+                await User.bulkCreate([
+                    { firstName: "Lucas", lastName: "Callamullo", email: "lucas@example.com" },
+                    { firstName: "Juan", lastName: "Perez", email: "juan.perez@gmail.com" },
+                    { firstName: "Maria", lastName: "Sosa", email: "mary@gmail.com" }
+                ], { transaction: t });
+
+                console.log('✅ Datos de prueba (Seed) insertados con éxito en la transacción.');
+            });
+
+        } catch (error) {
+            // Si algo falló adentro, el ROLLBACK ya se ejecutó automáticamente.
+            console.error('❌ Error en el Seed (Se hizo Rollback):', error);
+        }
+    }
+}
+
+module.exports = UserService;

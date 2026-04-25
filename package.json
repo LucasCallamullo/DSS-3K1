@@ -1,0 +1,28 @@
+{
+  "name": "dds-github",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000D\u0000S\u0000S\u0000-\u00003\u0000K\u00001\u0000\r\u0000 \u0000\r\u0000 \u0000#\u0000#\u0000 \u0000R\u0000a\u0000m\u0000a\u0000s\u0000 \u0000P\u0000r\u0000o\u0000o\u0000f\u0000s\u0000\r\u0000 \u0000\r\u0000 \u0000P\u0000r\u0000u\u0000e\u0000b\u0000a\u0000s\u0000 \u0000p\u0000a\u0000r\u0000a\u0000 \u0000c\u0000o\u0000m\u0000o\u0000 \u0000u\u0000s\u0000a\u0000r\u0000 \u0000G\u0000i\u0000t\u0000\r\u0000 \u0000",
+  "main": "./src/app.js",
+  "scripts": {
+    "start": "node ./src/app.js",
+    "dev": "node --watch src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucasCallamullo/DSS-3K1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/LucasCallamullo/DSS-3K1/issues"
+  },
+  "homepage": "https://github.com/LucasCallamullo/DSS-3K1#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "sequelize": "^6.37.8",
+    "sqlite3": "^6.0.1"
+  }
+}
