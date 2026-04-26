@@ -41,6 +41,35 @@ class UserService {
 
 
     /**
+     * Actualiza un usuario. Sirve para PUT y PATCH.
+     * @param {number} id - ID del usuario.
+     * @param {Object} updateData - Datos a modificar.
+     * @returns {Promise<Object|null>} El usuario actualizado.
+     */
+    static async updateUser(id, updateData) {
+        const user = await User.findByPk(id);
+        if (!user) return null;
+
+        // update() solo modifica los campos presentes en updateData
+        return await user.update(updateData);
+    }
+
+
+    /**
+     * Elimina un usuario de la base de datos.
+     * @param {number} id 
+     * @returns {Promise<boolean>} True si fue eliminado, false si no existía.
+     */
+    static async deleteUser(id) {
+        const user = await User.findByPk(id);
+        if (!user) return false;
+
+        await user.destroy();
+        return true;
+    }
+
+
+    /**
      * Genera datos de prueba iniciales en la base de datos.
      * Útil para desarrollo y testing.
      */
@@ -56,7 +85,7 @@ class UserService {
 
                 const count = await User.count({ transaction: t });
                 
-                if (count > 1) {
+                if (count > 0) {
                     console.log('🌱 La base de datos ya tiene datos, omitiendo el seed.');
                     return;
                 }
